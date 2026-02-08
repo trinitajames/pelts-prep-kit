@@ -54,13 +54,13 @@
         h2 {
             color: #333;
             font-size: 24px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .subtitle {
             color: #666;
             font-size: 16px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             line-height: 1.6;
         }
 
@@ -87,18 +87,6 @@
             transform: translateY(0);
         }
 
-        .btn-secondary {
-            background: #f0f1ff;
-            color: #4a4ea0;
-            border: none;
-            padding: 10px 20px;
-            font-size: 14px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 500;
-            margin-top: 10px;
-        }
-
         .diagnostic-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -123,7 +111,7 @@
 
         .diagnostic-item p {
             color: #667eea;
-            font-size: 20px;
+            font-size: 24px;
             font-weight: bold;
         }
 
@@ -147,32 +135,25 @@
             color: white;
             padding: 30px;
             border-radius: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             text-align: center;
         }
 
-        .header-label {
-            font-size: 16px;
-            opacity: 0.9;
-            margin-bottom: 5px;
-        }
-
-        .header-subtitle {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-top: 10px;
-        }
-
         .band-score {
-            font-size: 42px;
+            font-size: 48px;
             font-weight: bold;
             margin: 10px 0;
+        }
+
+        .band-change {
+            font-size: 20px;
+            opacity: 0.9;
         }
 
         .section-grid {
             display: grid;
             gap: 15px;
-            margin: 20px 0;
+            margin: 30px 0;
         }
 
         .section-item {
@@ -196,7 +177,7 @@
         }
 
         .section-score {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: bold;
             color: #667eea;
         }
@@ -241,7 +222,7 @@
 
         .projection p {
             color: #667eea;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
         }
 
@@ -299,42 +280,9 @@
 
         .progress-indicator {
             text-align: center;
-            margin: 20px 0 0;
+            margin: 20px 0;
             color: #666;
             font-size: 14px;
-        }
-
-        .streak-pill {
-            display: inline-block;
-            padding: 6px 14px;
-            border-radius: 999px;
-            background: #fff4d9;
-            color: #8a5a00;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .details {
-            display: none;
-            margin-top: 15px;
-        }
-
-        .details.visible {
-            display: block;
-        }
-
-        /* NEW: AI indicator pill */
-        .ai-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            border-radius: 999px;
-            background: #eef2ff;
-            color: #4a4ea0;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 10px;
         }
 
         .watermark {
@@ -350,17 +298,13 @@
             .diagnostic-grid {
                 grid-template-columns: 1fr;
             }
-
+            
             .container {
                 padding: 20px;
             }
-
+            
             h1 {
                 font-size: 24px;
-            }
-
-            .band-score {
-                font-size: 34px;
             }
         }
     </style>
@@ -370,13 +314,7 @@
         <!-- Screen 1: Welcome & Diagnostic -->
         <div class="screen active" id="screen1">
             <h1>Welcome to IELTS Prep</h1>
-            <p class="subtitle">
-                Let's start by understanding your current level. This quick 5-minute diagnostic will help us personalize your preparation journey.
-            </p>
-
-            <p class="subtitle">
-                <strong>Good news:</strong> Most learners reach their target band by doing just <strong>10–15 minutes a day</strong>. We'll keep each step small and clear.
-            </p>
+            <p class="subtitle">Let's start by understanding your current level. This quick 5-minute diagnostic will help us personalize your preparation journey.</p>
             
             <div class="diagnostic-grid">
                 <div class="diagnostic-item">
@@ -398,165 +336,23 @@
             </div>
 
             <p class="subtitle">
-                We'll identify your weak and strong areas so the system can choose one simple task for you every day—no overthinking, just show up.
+                <strong>Why this matters:</strong> We'll identify your weak and strong areas to create a personalized daily task plan that focuses your effort where it's needed most.
             </p>
 
             <button class="btn" onclick="goToScreen(2)">Start Diagnostic Assessment</button>
         </div>
 
-        <!-- Screen 2: Diagnostic Results & Simple Focus -->
+        <!-- Screen 2: Diagnostic Results & Initial Dashboard -->
         <div class="screen" id="screen2">
             <h2>Your Diagnostic Results</h2>
             
             <div class="dashboard-header">
-                <div class="header-label">Your starting point</div>
-                <div class="band-score">Band 6.0</div>
-                <div class="header-subtitle">
-                    Target: Band 7.0 • Main focus: <strong>✍️ Writing</strong>
-                </div>
+                <div style="font-size: 16px; opacity: 0.9; margin-bottom: 5px;">Your Current Band Score</div>
+                <div class="band-score">5.5 - 6.0</div>
+                <div style="font-size: 14px; opacity: 0.8; margin-top: 10px;">Target: 7.0 | Gap: ~1 band</div>
             </div>
 
-            <p class="subtitle">
-                We'll keep it simple: your main job is to work on <strong>Writing</strong>. Reading and Speaking are already strong, and Listening is moderate—we'll keep those in maintenance mode while we lift your weakest area.
-            </p>
-
-            <button class="btn-secondary" type="button" onclick="toggleDetails(this)">
-                View detailed breakdown
-            </button>
-
-            <div class="details" id="details">
-                <div class="section-grid">
-                    <div class="section-item">
-                        <div class="section-info">
-                            <div class="section-name">📖 Reading</div>
-                            <div>
-                                <span class="section-score">7.0</span>
-                                <span class="section-status status-strong">✓ Strong</span>
-                            </div>
-                        </div>
-                        <div class="progress-bar" style="width: 150px;">
-                            <div class="progress-fill" style="width: 85%;"></div>
-                        </div>
-                    </div>
-
-                    <div class="section-item">
-                        <div class="section-info">
-                            <div class="section-name">👂 Listening</div>
-                            <div>
-                                <span class="section-score">5.5</span>
-                                <span class="section-status status-improving">↗ Moderate</span>
-                            </div>
-                        </div>
-                        <div class="progress-bar" style="width: 150px;">
-                            <div class="progress-fill" style="width: 55%;"></div>
-                        </div>
-                    </div>
-
-                    <div class="section-item" style="border-left: 4px solid #f5576c;">
-                        <div class="section-info">
-                            <div class="section-name">✍️ Writing</div>
-                            <div>
-                                <span class="section-score">5.0</span>
-                                <span class="section-status status-focus">⚠ Needs work</span>
-                            </div>
-                        </div>
-                        <div class="progress-bar" style="width: 150px;">
-                            <div class="progress-fill" style="width: 40%;"></div>
-                        </div>
-                    </div>
-
-                    <div class="section-item">
-                        <div class="section-info">
-                            <div class="section-name">🗣️ Speaking</div>
-                            <div>
-                                <span class="section-score">6.5</span>
-                                <span class="section-status status-strong">✓ Good</span>
-                            </div>
-                        </div>
-                        <div class="progress-bar" style="width: 150px;">
-                            <div class="progress-fill" style="width: 75%;"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="projection">
-                    <h3>📊 Your Personalized Plan</h3>
-                    <p>Daily tasks will focus mostly on <strong>Writing (4×/week)</strong> and <strong>Listening (2×/week)</strong>, while maintaining Reading and Speaking at a normal pace.</p>
-                </div>
-
-                <p class="subtitle" style="margin-top: 10px;">
-                    <strong>Recommended prep time:</strong> 6–8 weeks at 10–15 minutes per day.
-                </p>
-            </div>
-
-            <button class="btn" style="margin-top: 25px;" onclick="goToScreen(3)">View Today's Task</button>
-        </div>
-
-        <!-- Screen 3: Daily Task -->
-        <div class="screen" id="screen3">
-            <h2>Today's Task – Day 1</h2>
-
-            <p class="subtitle">
-                You're one small task away from moving closer to your target band. Just <strong>15 minutes today</strong> keeps you on track.
-            </p>
-
-            <!-- NEW: AI visual indicator -->
-            <div class="ai-pill">
-                <span>🤖</span>
-                <span>Today's task is AI-selected based on your level</span>
-            </div>
-
-            <br><br>
-
-            <div class="streak-pill">
-                🔥 Day 0 – start your streak today
-            </div>
-            
-            <div class="task-card">
-                <div class="task-header">
-                    <div class="task-title">✍️ Writing – Grammar Fundamentals</div>
-                    <div class="task-time">⏱️ 15 min</div>
-                </div>
-                
-                <div class="task-description">
-                    <strong>Task:</strong> Complete 5 sentence correction exercises focusing on common grammar mistakes in IELTS Writing Task 2.
-                    <br><br>
-                    <strong>Why this task?</strong> Your diagnostic showed Writing as your weakest area (5.0). We're starting with grammar fundamentals to build a strong base so later essays feel easier.
-                    <br><br>
-                    <strong>What to do:</strong>
-                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
-                        <li>Watch a 3-minute video on subject–verb agreement</li>
-                        <li>Complete 5 practice corrections</li>
-                        <li>Review explanations for each answer</li>
-                    </ul>
-                </div>
-
-                <div class="progress-indicator">
-                    <strong>Week 1:</strong> 0 / 7 daily tasks completed
-                </div>
-            </div>
-
-            <button class="btn" onclick="completeTask(this)">Complete Task &amp; See Progress</button>
-        </div>
-
-        <!-- Screen 4: Updated Dashboard with Progress -->
-        <div class="screen" id="screen4">
-            <div class="celebration">
-                <span class="emoji">🎉</span>
-                Great work! You’ve completed your first task!
-            </div>
-
-            <h2>Your Progress After Today</h2>
-            
-            <div class="dashboard-header">
-                <div class="header-label">You're building momentum</div>
-                <div class="band-score">Band ~6.0</div>
-                <div class="header-subtitle">
-                    Target: 7.0 • Keep showing up for 10–15 minutes a day
-                </div>
-            </div>
-
-            <h3 style="margin-bottom: 10px; color: #333;">Section Snapshot:</h3>
+            <h3 style="margin-bottom: 15px; color: #333;">Section Breakdown:</h3>
             
             <div class="section-grid">
                 <div class="section-item">
@@ -564,7 +360,7 @@
                         <div class="section-name">📖 Reading</div>
                         <div>
                             <span class="section-score">7.0</span>
-                            <span class="section-status status-strong">✓ Strong – maintain</span>
+                            <span class="section-status status-strong">✓ Strong</span>
                         </div>
                     </div>
                     <div class="progress-bar" style="width: 150px;">
@@ -577,7 +373,7 @@
                         <div class="section-name">👂 Listening</div>
                         <div>
                             <span class="section-score">5.5</span>
-                            <span class="section-status status-improving">↗ On track</span>
+                            <span class="section-status status-improving">↗ Moderate</span>
                         </div>
                     </div>
                     <div class="progress-bar" style="width: 150px;">
@@ -585,15 +381,130 @@
                     </div>
                 </div>
 
-                <div class="section-item" style="border-left: 4px solid #f5576c%;">
+                <div class="section-item">
                     <div class="section-info">
                         <div class="section-name">✍️ Writing</div>
                         <div>
                             <span class="section-score">5.0</span>
-                            <span class="section-status status-focus">⚠ Focus area</span>
+                            <span class="section-status status-focus">⚠ Needs Work</span>
+                        </div>
+                    </div>
+                    <div class="progress-bar" style="width: 150px;">
+                        <div class="progress-fill" style="width: 40%;"></div>
+                    </div>
+                </div>
+
+                <div class="section-item">
+                    <div class="section-info">
+                        <div class="section-name">🗣️ Speaking</div>
+                        <div>
+                            <span class="section-score">6.5</span>
+                            <span class="section-status status-strong">✓ Good</span>
+                        </div>
+                    </div>
+                    <div class="progress-bar" style="width: 150px;">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projection">
+                <h3>📊 Your Personalized Plan</h3>
+                <p>Your daily tasks will focus heavily on Writing (4x/week) and Listening (2x/week), while maintaining Reading and Speaking at normal pace.</p>
+            </div>
+
+            <p class="subtitle" style="margin-top: 20px;">
+                <strong>Recommended prep time:</strong> 6-8 weeks at 15 min/day
+            </p>
+
+            <button class="btn" onclick="goToScreen(3)">View Today's Task</button>
+        </div>
+
+        <!-- Screen 3: Daily Task -->
+        <div class="screen" id="screen3">
+            <h2>Today's Task - Day 1</h2>
+            
+            <div class="task-card">
+                <div class="task-header">
+                    <div class="task-title">✍️ Writing - Grammar Fundamentals</div>
+                    <div class="task-time">⏱️ 15 min</div>
+                </div>
+                
+                <div class="task-description">
+                    <strong>Task:</strong> Complete 5 sentence correction exercises focusing on common grammar mistakes in IELTS Writing Task 2.
+                    <br><br>
+                    <strong>Why this task?</strong> Your diagnostic showed Writing as your weakest area (5.0). We're starting with grammar fundamentals to build a strong foundation.
+                    <br><br>
+                    <strong>What to do:</strong>
+                    <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                        <li>Watch 3-min video on subject-verb agreement</li>
+                        <li>Complete 5 practice corrections</li>
+                        <li>Review explanations for each answer</li>
+                    </ul>
+                </div>
+
+                <div class="progress-indicator">
+                    <strong>Week 1 Progress:</strong> 1/7 tasks completed
+                </div>
+            </div>
+
+            <button class="btn" onclick="completeTask()">Complete Task & See Progress</button>
+        </div>
+
+        <!-- Screen 4: Updated Dashboard with Progress -->
+        <div class="screen" id="screen4">
+            <div class="celebration">
+                <span class="emoji">🎉</span>
+                Great work! You've completed your first task!
+            </div>
+
+            <h2>Your Updated Progress</h2>
+            
+            <div class="dashboard-header">
+                <div style="font-size: 16px; opacity: 0.9; margin-bottom: 5px;">Your Estimated Band Score</div>
+                <div class="band-score">6.0 - 6.2</div>
+                <div class="band-change">↗ +0.2 from yesterday! 🎯</div>
+                <div style="font-size: 14px; opacity: 0.8; margin-top: 10px;">Target: 7.0 | Remaining: ~0.8 bands</div>
+            </div>
+
+            <h3 style="margin-bottom: 15px; color: #333;">Section Breakdown:</h3>
+            
+            <div class="section-grid">
+                <div class="section-item">
+                    <div class="section-info">
+                        <div class="section-name">📖 Reading</div>
+                        <div>
+                            <span class="section-score">7.0</span>
+                            <span class="section-status status-strong">✓ Strong - maintain</span>
+                        </div>
+                    </div>
+                    <div class="progress-bar" style="width: 150px;">
+                        <div class="progress-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="section-item">
+                    <div class="section-info">
+                        <div class="section-name">👂 Listening</div>
+                        <div>
+                            <span class="section-score">5.5</span>
+                            <span class="section-status status-improving">↗ Improving</span>
+                        </div>
+                    </div>
+                    <div class="progress-bar" style="width: 150px;">
+                        <div class="progress-fill" style="width: 55%;"></div>
+                    </div>
+                </div>
+
+                <div class="section-item" style="border-left: 4px solid #f5576c;">
+                    <div class="section-info">
+                        <div class="section-name">✍️ Writing <span style="color: #f5576c; font-size: 12px;">NEW!</span></div>
+                        <div>
+                            <span class="section-score">5.2</span>
+                            <span class="section-status status-focus">⚠ 3 more tasks to reach 5.5</span>
                         </div>
                         <div style="font-size: 12px; color: #f5576c; margin-top: 5px; font-weight: 600;">
-                            Today's task strengthened your grammar foundation. Keep going to see this score move.
+                            ↗ +0.2 improvement today!
                         </div>
                     </div>
                     <div class="progress-bar" style="width: 150px;">
@@ -617,27 +528,23 @@
 
             <div class="projection">
                 <h3>📈 Projection</h3>
-                <p>Stay consistent with one small task per day and you’re on track to reach your target band before the exam.</p>
-                <p style="font-size: 14px; margin-top: 8px; opacity: 0.8;">The goal isn’t perfection each day—it’s showing up.</p>
+                <p>At this pace, estimated band by exam date: <strong style="font-size: 24px;">7.0 ✓</strong></p>
+                <p style="font-size: 14px; margin-top: 10px; opacity: 0.8;">You're on track! Keep completing daily tasks to maintain momentum.</p>
             </div>
 
-            <p class="subtitle" style="margin-top: 5px; text-align: center;">
-                <strong>Today's achievement:</strong> You completed 1 focused Writing task. Your confidence is growing—keep your streak going tomorrow.
+            <p class="subtitle" style="margin-top: 20px; text-align: center;">
+                <strong>Today's Achievement:</strong> Writing improved by 2%. Just 5 more focused tasks to reach 60% readiness!
             </p>
 
-            <div style="text-align: center; margin-top: 5px;">
-                <span class="streak-pill">🔥 1-day streak – nice start!</span>
-            </div>
-
             <div style="text-align: center; margin-top: 30px;">
-                <button class="btn" onclick="goToScreen(3)" style="margin-right: 10px;">← Review Today’s Task</button>
-                <button class="btn" onclick="goToScreen(3)">See Tomorrow’s Task →</button>
+                <button class="btn" onclick="goToScreen(1)" style="margin-right: 10px;">← Start Over</button>
+                <button class="btn" onclick="goToScreen(3)">View Tomorrow's Task →</button>
             </div>
         </div>
 
         <div class="watermark">
-            <strong>Interactive Prototype</strong> – IELTS Prep Engagement System<br>
-            Product Intern Assignment | Leap Scholar
+            <strong>Interactive Prototype</strong> - IELTS Prep Engagement System<br>
+            Product Intern Assignment | Leap Finance
         </div>
     </div>
 
@@ -655,20 +562,9 @@
             window.scrollTo(0, 0);
         }
 
-        function toggleDetails(button) {
-            const details = document.getElementById('details');
-            const isVisible = details.classList.contains('visible');
-            if (isVisible) {
-                details.classList.remove('visible');
-                button.textContent = 'View detailed breakdown';
-            } else {
-                details.classList.add('visible');
-                button.textContent = 'Hide detailed breakdown';
-            }
-        }
-
-        function completeTask(btn) {
+        function completeTask() {
             // Simulate task completion with a brief pause
+            const btn = event.target;
             btn.textContent = 'Processing...';
             btn.disabled = true;
             
@@ -679,15 +575,16 @@
             }, 800);
         }
 
-        // Keyboard navigation (optional)
+        // Add keyboard navigation
         document.addEventListener('keydown', function(event) {
-            const currentScreen = document.querySelector('.screen.active');
-            const currentId = parseInt(currentScreen.id.replace('screen', ''), 10);
-
-            if (event.key === 'ArrowRight' && currentId < 4) {
-                goToScreen(currentId + 1);
-            } else if (event.key === 'ArrowLeft' && currentId > 1) {
-                goToScreen(currentId - 1);
+            if (event.key === 'ArrowRight') {
+                const currentScreen = document.querySelector('.screen.active');
+                const currentId = parseInt(currentScreen.id.replace('screen', ''));
+                if (currentId < 4) goToScreen(currentId + 1);
+            } else if (event.key === 'ArrowLeft') {
+                const currentScreen = document.querySelector('.screen.active');
+                const currentId = parseInt(currentScreen.id.replace('screen', ''));
+                if (currentId > 1) goToScreen(currentId - 1);
             }
         });
     </script>
